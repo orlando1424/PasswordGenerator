@@ -6,16 +6,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
 namespace PasswordGenerator
 {
-    public partial class Form1 : MetroForm
+    public partial class PasswordGenerator : MetroForm
     {
-        public Form1()
+        public PasswordGenerator()
         {
             InitializeComponent();
+        }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            string password = Membership.GeneratePassword(12, 5);
+
+            passwordTextBox.Text = password;
+            
         }
     }
 }
